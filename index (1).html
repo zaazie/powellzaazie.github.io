@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lawrence Zaazie Powell</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1a1a;
+      --muted: #555;
+      --accent: #1a6b3a;
+      --accent-light: #e8f4ec;
+      --border: #ddd;
+      --bg: #fafaf8;
+      --white: #fff;
+      --max: 780px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(250,250,248,0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 54px;
+    }
+    .nav-name {
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── SOCIALS BAR ── */
+    .socials-bar {
+      background: var(--accent);
+      padding: 8px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .socials-bar a {
+      color: #fff;
+      font-size: 0.82rem;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.88;
+      transition: opacity 0.2s;
+    }
+    .socials-bar a:hover { opacity: 1; }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: var(--max);
+      margin: 64px auto 0;
+      padding: 0 24px 64px;
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 48px;
+      align-items: start;
+    }
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .hero-role {
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      color: #333;
+      font-size: 1rem;
+      max-width: 520px;
+    }
+    .hero-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 4px;
+      object-fit: cover;
+      border: 3px solid var(--border);
+    }
+    .hero-photo-placeholder {
+      width: 180px;
+      height: 180px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #c8e6d4 0%, #a8d5b8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 3rem;
+      color: var(--accent);
+      font-weight: 600;
+      border: 3px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ── SECTION ── */
+    section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 52px 24px;
+      border-top: 1px solid var(--border);
+    }
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      margin-bottom: 28px;
+      color: var(--ink);
+    }
+    h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    /* ── TABLE LAYOUT (like ldery) ── */
+    .entry {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 12px 24px;
+      margin-bottom: 28px;
+      align-items: start;
+    }
+    .entry-date {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-top: 3px;
+      line-height: 1.5;
+    }
+    .entry-body p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-top: 4px;
+    }
+    .entry-body ul {
+      margin-top: 6px;
+      padding-left: 18px;
+    }
+    .entry-body ul li {
+      font-size: 0.93rem;
+      color: #444;
+      margin-bottom: 3px;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 3px;
+      padding: 2px 8px;
+      margin-top: 6px;
+      margin-right: 4px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 20px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(26,107,58,0.08);
+    }
+    .project-card h3 { font-size: 1rem; margin-bottom: 6px; }
+    .project-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── CONTACT ── */
+    .contact-line {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .contact-line a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .contact-line a:hover { text-decoration: underline; }
+
+    /* ── CV LINK ── */
+    .cv-link {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+      border-radius: 4px;
+      padding: 7px 18px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cv-link:hover { background: var(--accent); color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo-placeholder { width: 120px; height: 120px; font-size: 2rem; }
+      .entry { grid-template-columns: 1fr; }
+      .entry-date { color: var(--accent); font-weight: 600; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="#">Lawrence Zaazie Powell</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Work</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- SOCIALS -->
+<div class="socials-bar">
+  <a href="https://github.com/" target="_blank">GitHub</a>
+  <a href="https://linkedin.com/in/" target="_blank">LinkedIn</a>
+  <a href="https://twitter.com/" target="_blank">Twitter</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <div>
+    <h1>Lawrence Zaazie Powell</h1>
+    <div class="hero-role">Acting Programs &amp; IT Lead · National Youth Authority, Ghana</div>
+    <p>
+      I am a programs and technology professional based in Ghana, with a background spanning crypto community building, digital education, data analytics, and youth development. I currently lead programs and IT at the National Youth Authority of Ghana, where I work to connect young people with digital skills and economic opportunities.
+    </p>
+    <p style="margin-top:14px;">
+      Previously, I spent four years at <strong>Yellow Card Financial</strong> — Africa's leading crypto exchange — where I built and managed communities, ran educational workshops across universities, and developed partnerships that onboarded thousands of users into the crypto ecosystem.
+    </p>
+    <p style="margin-top:14px;">
+      My interests sit at the intersection of <em>technology, community, and development</em>. I hold a BSc in Computer Science from the University of Energy and Natural Resources, Ghana.
+    </p>
+    <a class="cv-link" href="#">Full CV (PDF)</a>
+  </div>
+  <div class="hero-photo-placeholder">LP</div>
+</div>
+
+<!-- WORK EXPERIENCE -->
+<section id="experience">
+  <h2>Work Experience</h2>
+
+  <div class="entry">
+    <div class="entry-date">2024 – Present</div>
+    <div class="entry-body">
+      <h3>Acting Programs &amp; IT Lead</h3>
+      <p><strong>National Youth Authority</strong> · Ghana</p>
+      <ul>
+        <li>Lead program development and IT strategy for Ghana's national youth development agency.</li>
+        <li>Coordinate initiatives connecting youth to digital skills, employment, and civic participation.</li>
+        <li>Drive adoption of digital tools and systems to modernize program delivery.</li>
+      </ul>
+      <span class="tag">Program Management</span>
+      <span class="tag">IT Leadership</span>
+      <span class="tag">Youth Development</span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">2020 – 2024</div>
+    <div class="entry-body">
+      <h3>Community &amp; Programs (Multiple Roles)</h3>
+      <p><strong>Yellow Card Financial</strong> · Ghana (Africa's leading crypto exchange)</p>
+      <ul>
+        <li>Built and managed large-scale crypto communities across multiple channels and campuses.</li>
+        <li>Delivered educational workshops and events at universities across Ghana, onboarding thousands of users.</li>
+        <li>Developed and maintained university partnerships, expanding Yellow Card's campus footprint.</li>
+        <li>Coordinated regional programs and managed social media presence to drive growth and engagement.</li>
+      </ul>
+      <span class="tag">Crypto / Web3</span>
+      <span class="tag">Community Building</span>
+      <span class="tag">Educational Workshops</span>
+      <span class="tag">Social Media</span>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-date">Concurrent</div>
+    <div class="entry-body">
+      <h3>Data Analytics Associate</h3>
+      <p><strong>Electoral Commission of Ghana</strong></p>
+      <ul>
+        <li>Supported data analysis and reporting for electoral processes.</li>
+        <li>Contributed to data integrity and visualization workflows used in decision-making.</li>
+      </ul>
+      <span class="tag">Data Analytics</span>
+      <span class="tag">Civic Tech</span>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <h2>Education</h2>
+
+  <div class="entry">
+    <div class="entry-date">2016 – 2020</div>
+    <div class="entry-body">
+      <h3>BSc Computer Science</h3>
+      <p><strong>University of Energy and Natural Resources (UENR)</strong> · Ghana</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h3>Crypto Campus Outreach Program</h3>
+      <p>Designed and led a structured university outreach initiative at Yellow Card, building partnerships with institutions across Ghana and educating students on cryptocurrency and financial inclusion.</p>
+      <span class="tag">Yellow Card</span>
+      <span class="tag">Education</span>
+    </div>
+
+    <div class="project-card">
+      <h3>One Million Coders Programme</h3>
+      <p>Contributing to a government-led initiative to expand digital literacy and coding skills among youth in Ghana, with a focus on driving sustainable participation at the municipal level.</p>
+      <span class="tag">Gov't Initiative</span>
+      <span class="tag">Digital Skills</span>
+    </div>
+
+    <div class="project-card">
+      <h3>Community Growth &amp; Engagement Systems</h3>
+      <p>Built community management systems and social media workflows at Yellow Card that scaled user engagement and streamlined event coordination across multiple African markets.</p>
+      <span class="tag">Community</span>
+      <span class="tag">Social Media</span>
+    </div>
+
+    <div class="project-card">
+      <h3>Electoral Data Analytics</h3>
+      <p>Supported data collection, cleaning, and visualization pipelines at the Electoral Commission of Ghana to improve the accuracy and accessibility of electoral data.</p>
+      <span class="tag">Data Analytics</span>
+      <span class="tag">Ghana EC</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p class="contact-line">I'm open to roles in crypto, tech, community, and international development — especially Ghana-based or Africa-remote positions.</p>
+  <br>
+  <p class="contact-line">📧 <a href="mailto:your@email.com">your [at] email [dot] com</a></p>
+  <p class="contact-line">🐙 <a href="https://github.com/" target="_blank">github.com/yourhandle</a></p>
+  <p class="contact-line">💼 <a href="https://linkedin.com/in/" target="_blank">linkedin.com/in/yourprofile</a></p>
+</section>
+
+<footer>
+  Lawrence Zaazie Powell · Ghana · Built with GitHub Pages
+</footer>
+
+</body>
+</html>
